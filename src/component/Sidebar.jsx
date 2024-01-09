@@ -8,6 +8,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Home, Storefront, People, DarkMode } from "@mui/icons-material";
 import Switch from "@mui/material/Switch";
+import { Link } from "react-router-dom";
+// Link ไปทันที
 
 const Wrapper = styled(Box)(({ theme }) => {
   return {
@@ -29,32 +31,38 @@ function Sidebar() {
       <Box styled={{ position: "fixed" }}>
         <nav>
           <List>
-            <ListItem>
-              <ListItemButton>
-                <ListItemIcon>
-                  <Home />
-                </ListItemIcon>
-                <ListItemText primary="Home Page" />
-              </ListItemButton>
-            </ListItem>
+            <Link to="/">
+              <ListItem>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <Home />
+                  </ListItemIcon>
+                  <ListItemText primary="Home Page" />
+                </ListItemButton>
+              </ListItem>
+            </Link>
             {/* shop */}
-            <ListItem>
-              <ListItemButton>
-                <ListItemIcon>
-                  <Storefront />
-                </ListItemIcon>
-                <ListItemText primary="Shop" />
-              </ListItemButton>
-            </ListItem>
+            <Link to="/">
+              <ListItem>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <Storefront />
+                  </ListItemIcon>
+                  <ListItemText primary="Shop" />
+                </ListItemButton>
+              </ListItem>
+            </Link>
             {/* people */}
-            <ListItem>
-              <ListItemButton>
-                <ListItemIcon>
-                  <People />
-                </ListItemIcon>
-                <ListItemText primary="Friend" />
-              </ListItemButton>
-            </ListItem>
+            <Link to="/friend">
+              <ListItem>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <People />
+                  </ListItemIcon>
+                  <ListItemText primary="Friend" />
+                </ListItemButton>
+              </ListItem>
+            </Link>
             {/* dark */}
             <ListItem>
               <ListItemButton>

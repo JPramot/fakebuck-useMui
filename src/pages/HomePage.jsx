@@ -6,14 +6,15 @@ import Rightbar from "../component/Rightbar";
 
 function HomePage() {
   return (
-    <Box>
-      <Navbar />
-      <Stack direction="row" gap={1}>
-        <Sidebar />
-        <Feed />
-        <Rightbar />
-      </Stack>
-    </Box>
+    // ไปอยู่ใน AppLayout ใช้ Neaster Route ช่วยรัน
+    // <Box>
+    //   <Navbar />
+    <Stack direction="row" gap={1}>
+      <Sidebar />
+      <Feed />
+      <Rightbar />
+    </Stack>
+    // </Box>
   );
 }
 
