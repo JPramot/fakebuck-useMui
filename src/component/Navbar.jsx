@@ -26,12 +26,12 @@ function Navbar() {
             Fakebuck
           </Typography>
           <Stack direction="row" gap={1}>
-            <IconButton sx={{ display: { sm: "none" } }}>
+            <IconButton sx={{ display: { xs: "none", md: "block" } }}>
               <Badge badgeContent={4} color="error">
                 <MailIcon />
               </Badge>
             </IconButton>
-            <IconButton>
+            <IconButton sx={{ display: { xs: "none", md: "block" } }}>
               <Badge badgeContent={4} color="error">
                 <NotificationIcon />
               </Badge>
