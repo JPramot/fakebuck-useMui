@@ -17,6 +17,7 @@ import Avatar from "@mui/material/Avatar";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Menu, MenuItem } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 // Custom Component
 const AppBarContent = styled(Box)`
@@ -37,6 +38,11 @@ const CustomIcon = styled(IconButton)(({ theme }) => {
 
 function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
+
+  // const handlelogout = () => {
+  //   navigate("/login");
+  // };
 
   const openMenuList = (event) => {
     // set แท็กที่จะเป็นตัว anchor
@@ -83,9 +89,21 @@ function Navbar() {
             horizontal: "left",
           }}
         >
-          <MenuItem>Profile</MenuItem>
+          <MenuItem
+            onClick={() => {
+              navigate("/profile");
+            }}
+          >
+            Profile
+          </MenuItem>
           <MenuItem>My account</MenuItem>
-          <MenuItem>Logout</MenuItem>
+          <MenuItem
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Logout
+          </MenuItem>
         </Menu>
       </AppBarContent>
     </AppBar>
