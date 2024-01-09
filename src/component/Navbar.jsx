@@ -26,7 +26,7 @@ function Navbar() {
             Fakebuck
           </Typography>
           <Stack direction="row" gap={1}>
-            <IconButton>
+            <IconButton sx={{ display: { sm: "none" } }}>
               <Badge badgeContent={4} color="error">
                 <MailIcon />
               </Badge>
