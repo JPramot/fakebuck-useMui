@@ -1,9 +1,16 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  Navigate,
+} from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
 import ProfilePage from "../pages/ProfilePage";
 import FriendPage from "../pages/FriendPage";
 import AppLayout from "../layout/AppLayout";
+import FriendProfileWithId from "../pages/FriendProfileWithId";
+import ProtectRoute from "./ProtectRoute";
+import RedirectRoute from "./RedirectRoute";
 
 // ใช้ในการวาง route ต่างๆ ให้app รับ input เป็น arr ของ router Obj
 // router Obj = {path:string, component:ReactElement | React Component}
@@ -39,11 +46,19 @@ import AppLayout from "../layout/AppLayout";
 const router = createBrowserRouter([
   {
     path: "/login",
-    element: <LoginPage />,
+    element: (
+      <RedirectRoute>
+        <LoginPage />
+      </RedirectRoute>
+    ),
   },
   {
     path: "/",
-    element: <AppLayout />,
+    element: (
+      <ProtectRoute>
+        <AppLayout />
+      </ProtectRoute>
+    ),
     children: [
       {
         path: "",
@@ -60,21 +75,35 @@ const router = createBrowserRouter([
     ],
   },
   {
-    // dynamic path parameter
     path: "/friend",
     element: <FriendPage />,
   },
   {
-    // dynamic path parameter
+    // dynamic path parameter จะไปเป็นชื่อ key ของ obj ที่ return มาจาก  Hook useParam()
     path: "/friend/:friendId",
-    element: <h1>Friend with ID</h1>,
+    element: <FriendProfileWithId />,
   },
   {
     path: "*",
-    element: "page not found",
+    element: <Navigate to="/login" />,
   },
 ]);
 
 export default function Router() {
   return <RouterProvider router={router} />;
 }
+
+/*
+ Component
+    <Link to='/'>
+    <Navigate to='/'>
+    <Outlet/>
+
+ Hook
+    useNavigate()=> navigate('/')
+    useParams()=> paathParamObj
+
+ Setup
+    Fn : creeeateBrowserRouter(Arr<RouterObj>)
+    Component : <RouterProviger route={route}/>
+*/
